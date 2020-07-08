@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Site Metas -->
+    <title>SPPU NSS PCCOER</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    
+    <!-- Design fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet"> 
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons core CSS -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/style.css" rel="stylesheet">
+
+    <!-- Responsive styles for this template -->
+    <link href="/css/responsive.css" rel="stylesheet">
+
+    <!-- Colors for this template -->
+    <link href="/css/colors.css" rel="stylesheet">
+
+    <!-- Version Garden CSS for this template -->
+    <link href="/css/version/garden.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <div id="wrapper">
+        <%if(!auth){%>
+        <div class="collapse top-search" id="collapseExample">
+            <div class="card card-block">
+                <div class="newsletter-widget text-center">
+                    <form class="form-inline" action="/blog/home" method="get">
+                        <input type="text" name="search" class="form-control" placeholder="search by tag or author name">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </form>
+                </div><!-- end newsletter -->
+            </div>
+        </div><!-- end top-search -->
+
+        <div class="topbar-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 hidden-xs-down">
+                        <div class="topsocial">
+                            <a href="https://www.facebook.com/pccoerpune" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/nss_pccoer/?igshid=1qh83u742bsdo" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
+                        </div><!-- end social -->
+                    </div><!-- end col -->
+
+                    <div class="col-lg-4 hidden-md-down">
+                        <b style="position: absolute;"><a href="http://www.unipune.ac.in/other_academic_and_service_units/national_service_scheme/default.htm"><img src="/images/version/SPPU_LOGO.png" class="img-fluid" alt="SPPU"></a></b>
+                    </div><!-- end col -->
+                        
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <!--<div class="topsearch text-right">
+                            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i> Search</a>
+                        </div> end search -->
+                        <a href="http://pccoer.com/nss.php">NSS PCCOE&R</a>
+                    </div><!-- end col -->
+                    
+                </div><!-- end row -->
+            </div><!-- end header-logo -->
+        </div><!-- end topbar -->
+        <%}%>
+
+        <div class="header-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="logo">
+                            <a href="#"><img src="/images/version/NSS_HEADER.png" alt="https://nss.gov.in/sites/all/themes/youthaffair/logo.png"></a>
+                        </div><!-- end logo -->
+                    </div>
+                </div><!-- end row -->
+            </div><!-- end header-logo -->
+        </div><!-- end header -->
+
+        <header class="header">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-toggleable-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Forest Timemenu" aria-controls="Forest Timemenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-md-center" id="Forest Timemenu">
+                        <ul class="navbar-nav">
+                            <%if(!auth){%>
+                            <li <% if (pagetitle === 'home') { %> class="nav-item active"<%}%> >
+                                <a class="nav-link color-green-hover" href="/blog/home">Home</a>
+                            </li>
+                            <li <% if (pagetitle === 'register') { %> class="nav-item active"<%}%> >
+                                <a class="nav-link color-green-hover" href="/user/register">Register</a>
+                            </li>
+                            <li <% if (pagetitle === 'login') { %> class="nav-item active"<%}%> >
+                                <a class="nav-link color-green-hover" href="/user/login">Login</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link color-green-hover" href="garden-category.html">Indoor Living</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-green-hover" href="garden-category.html">Shopping Guides</a>
+                            </li>  
+                            <li class="nav-item">
+                                <a class="nav-link color-green-hover" href="garden-contact.html">Contact</a>
+                            </li> -->
+                            <%}else{%>
+                                <li <% if (pagetitle === 'dashboard') { %> class="nav-item active"<%}%> >
+                                    <a class="nav-link color-green-hover" href="/blog/dashboard">Home</a>
+                                </li>
+                                <li <% if (pagetitle === 'addarticle') { %> class="nav-item active"<%}%> >
+                                    <a class="nav-link color-green-hover" href="/blog/addarticle">AddArticle</a>
+                                </li>  
+                                <li <% if (pagetitle === 'logout') { %> class="nav-item active"<%}%> >
+                                    <a class="nav-link color-green-hover" href="/user/logout">Logout</a>
+                                </li>     
+                                <%}%>
+                        </ul>
+                    </div>
+                </nav>
+            </div><!-- end container -->
+        </header><!-- end header -->
