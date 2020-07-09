@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var path    = require('path');
 var session = require('express-session');
+var multer	=	require('multer');
 
 //make connection to db
 /*
@@ -26,9 +27,9 @@ mongoose.connect('mongodb://nsspccoer_admin:ADMINnsspccoer@cluster0-shard-00-00.
 
 const uri="mongodb+srv://nsspccoer:nsspccoer123456789@cluster0.6ygbe.mongodb.net/nss?retryWrites=true&w=majority";
 const uri0="mongodb+srv://nsspccoer_admin:ADMINnsspccoer@cluster0.6ygbe.mongodb.net/nss?retryWrites=true&w=majority";
-
+const uri1="mongodb+srv://nsspccoer_admin:ADMINnsspccoer@cluster0.6ygbe.mongodb.net/nss?retryWrites=true&w=majority";
 //mongoose.connect('mongodb://127.0.0.1:27017/Todo',{useNewUrlParser: true});
-mongoose.connect(uri,{useNewUrlParser: true});
+mongoose.connect(uri,{useNewUrlParser: true,useUnifiedTopology: true });
 const connectionObj=mongoose.connection;
 connectionObj.once('open',function(){
     console.log("connected with MongoDB success");
@@ -67,5 +68,29 @@ app.get('/',(req,res)=>{
 app.use('/user',require('./routes/users'));
 app.use('/blog',require('./routes/blogs'));
 
+//multiple Image Upload Public
+var storage	=	multer.diskStorage({
+    destination: function (req, file, callback) {
+      callback(null, './PublicUploads');
+    },
+    filename: function (req, file, callback) {
+      callback(null, Date.now()+"_"+file.originalname);
+      console.log(new Date().toLocaleString()+file.originalname+"::"+file.filename+"::"+file.fieldname+path.extname(file.originalname));
+    }
+  });
+  var upload = multer({ storage : storage}).array('userPhoto',10);
+  app.post('/photos',function(req,res){
+	upload(req,res,function(err) {
+		if(err) {
+			return res.end("Error uploading file.");
+		}else{
+        //res.end("File is uploaded");
+        //alert("Files Uploaded");
+        console.log("Files Uploaded");
+        }                  
+    });
+    res.redirect('blog/home');  
+});
+//server port
 var port = process.env.PORT || 3000;
 app.listen(port,()=>console.log('server running at:\n http://localhost:'+port));

@@ -1,4 +1,5 @@
 <%-include('../partial/header')-%>
+
  <section class="section wb">
     <div class="container">
         <div class="row">
@@ -14,12 +15,23 @@
                             <small><a href="#" title=""><%=data[0].author%></a></small>
                             <small><a href="#" title=""><i class="fa fa-eye"></i><%=data[0].views%></a></small>
                         </div><!-- end meta -->
+                        <div id="image-gallery">
+                            <div id="gallery">
+                                <!--GALLERY CODE-->
+                            </div>
+                            <div id="uploadimages">
+                                <!--MULTIPLE FILES UPLOAD CODE-->
+                                <%-include("../partial/multipleuploads")-%>
+                            </div>
+                        </div>
 
                         <div class="post-sharing">
                             <ul class="list-inline">
-                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
+                                <li><a href="https://www.facebook.com/pccoerpune" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
+                                <!--
                                 <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
                                 <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                                -->
                             </ul>
                         </div><!-- end post-sharing -->
                     </div><!-- end title -->
