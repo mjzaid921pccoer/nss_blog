@@ -4066,7 +4066,7 @@ tbody.collapse.show {
 
 @media (max-width: 767px) {
   .navbar-toggleable-sm .navbar-nav .dropdown-menu {
-    position: static;
+    position: absolute;
     float: none;
   }
   .navbar-toggleable-sm > .container {

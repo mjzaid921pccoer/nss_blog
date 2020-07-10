@@ -141,8 +141,8 @@ p,
 .page-link,
 .topbar-section {
 	color:#ffffff !important;
-	background-color: #74a044 !important;
-	border-color: #74a044 !important;
+	background-color: 	#000080 !important;
+	border-color: 	#000080 !important;
 }
 
 
@@ -155,5 +155,5 @@ a:focus,
 .navbar-nav .nav-link.active.color-green-hover,
 .navbar-nav .nav-link.color-green-hover:hover,
 .navbar-nav .nav-link.color-green-hover:focus {
-    color: #74a044 !important;
+    color: 	#000080 !important;
 }

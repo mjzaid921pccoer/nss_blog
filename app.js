@@ -4,6 +4,9 @@ var bodyParser = require('body-parser');
 var path    = require('path');
 var session = require('express-session');
 var multer	=	require('multer');
+var fs=require('fs');
+var https=require('https');
+var http=require('http');
 
 //make connection to db
 /*
@@ -94,3 +97,40 @@ var storage	=	multer.diskStorage({
 //server port
 var port = process.env.PORT || 3000;
 app.listen(port,()=>console.log('server running at:'+port));
+
+//gallery Module
+/*
+var uploadFolderPath=path.join(__dirname,'/PublicUploads/');
+console.log('gallery: '+uploadFolderPath);
+app.use(express.static(uploadFolderPath));
+app.get('/getImg',(req,res)=>{
+  let Img=getImagesFromDir(uploadFolderPath);
+  //res.render('gallery',{title:'PHOTO-GALLERY',images:Img});
+  console.log(Img);
+});
+
+function getImagesFromDir(dirPath){
+  let allImg=[];
+  var files=fs.readdirSync(dirPath).map(fileName => {
+      return path.join(dirPath, fileName);
+      //return fileName;
+    });
+    var myfiles=fs.readdirSync(dirPath).map(fileName => {
+      //return path.join(dirPath, fileName);
+      return fileName;
+    });
+    //console.log('files '+myfiles);
+    for(f in files){
+      console.log('file-'+f+' : '+myfiles[f]);
+      var stat =fs.statSync(files[f]);
+      if(stat && stat.isDirectory()){
+          getImagesFromDir(files[f]);
+      }else if(stat && stat.isFile() && ['.jpg','.png'].indexOf(path.extname(files[f]))!==-1) {
+          //allImg.push('/static'+files[f]);
+          allImg.push(myfiles[f]);
+      }
+    }
+    
+  return allImg;
+}
+*/
