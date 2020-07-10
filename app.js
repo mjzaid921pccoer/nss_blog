@@ -133,4 +133,25 @@ function getImagesFromDir(dirPath){
     
   return allImg;
 }
+////////////////////////SINGLE.EJS
+                                            <div class="box">
+                                                Images:
+                                                <div id="imagesID" class="overlay"> 
+                                                    
+                                                </div>
+                                            </div>        
+                                            <script>            
+                                                var picstring="<%-images-%>";
+                                                var pics=picstring.split(',');                     
+                                                console.log("EJS: "+pics);
+                                                for(i=0;i<pics.length;i++){
+                                                    var img=new Image(200,200);
+                                                    img.src=pics[i];
+                                                    var source=document.getElementById("imagesID");
+                                                    source.appendChild(img);
+                                                }
+                                            </script>
+
+
+
 */
