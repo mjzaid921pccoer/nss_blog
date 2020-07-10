@@ -93,4 +93,4 @@ var storage	=	multer.diskStorage({
 });
 //server port
 var port = process.env.PORT || 3000;
-app.listen(port,()=>console.log('server running at:\n http://localhost:'+port));
+app.listen(port,()=>console.log('server running at:'+port));
