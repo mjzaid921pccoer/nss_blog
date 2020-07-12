@@ -15,12 +15,19 @@
                             <small><a href="#" title=""><%=data[0].author%></a></small>
                             <small><a href="#" title=""><i class="fa fa-eye"></i><%=data[0].views%></a></small>
                         </div><!-- end meta -->
+
+
+                        <div class="blog-content">  
+                            <div class="pp">
+                                 <p><%=data[0].content%></p>
+                            </div><!-- end pp -->
+    
+                        </div><!-- end content -->                        
+
                         <div id="image-gallery">
                             <div id="gallery">
                                 <!--GALLERY CODE-->
-                                <!--
-
-                                -->
+                                <%-include("../partial/gallery")-%>                                
                             </div>
                             <div id="uploadimages">
                                 <!--MULTIPLE FILES UPLOAD CODE-->
@@ -43,12 +50,7 @@
                         <img src="/upload/garden_single_01.jpg" alt="" class="img-fluid">
                     </div><!-- end media -->
 
-                    <div class="blog-content">  
-                        <div class="pp">
-                             <p><%=data[0].content%></p>
-                        </div><!-- end pp -->
 
-                    </div><!-- end content -->
 
                     <hr class="invis1">
 

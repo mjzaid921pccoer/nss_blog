@@ -71,6 +71,13 @@ app.get('/',(req,res)=>{
 app.use('/user',require('./routes/users'));
 app.use('/blog',require('./routes/blogs'));
 
+//server port
+var port = process.env.PORT || 3000;
+app.listen(port,()=>console.log('server running at:'+port));
+
+
+
+
 //multiple Image Upload Public
 var storage	=	multer.diskStorage({
     destination: function (req, file, callback) {
@@ -94,9 +101,12 @@ var storage	=	multer.diskStorage({
     });
     res.redirect('blog/home');  
 });
-//server port
-var port = process.env.PORT || 3000;
-app.listen(port,()=>console.log('server running at:'+port));
+//multiple Image Upload Public END
+
+
+
+
+
 
 //gallery Module
 /*
@@ -134,24 +144,51 @@ function getImagesFromDir(dirPath){
   return allImg;
 }
 ////////////////////////SINGLE.EJS
-                                            <div class="box">
-                                                Images:
-                                                <div id="imagesID" class="overlay"> 
-                                                    
-                                                </div>
-                                            </div>        
-                                            <script>            
-                                                var picstring="<%-images-%>";
-                                                var pics=picstring.split(',');                     
-                                                console.log("EJS: "+pics);
-                                                for(i=0;i<pics.length;i++){
-                                                    var img=new Image(200,200);
-                                                    img.src=pics[i];
-                                                    var source=document.getElementById("imagesID");
-                                                    source.appendChild(img);
-                                                }
-                                            </script>
+
 
 
 
 */
+
+
+//var fs=require('fs');
+//var express=require('express');
+//var path=require('path');
+//var http=require('http');
+
+//var app=express();
+
+var uploadFolderPath=path.join(__dirname,'/PublicUploads/');
+console.log('gallery: '+uploadFolderPath);
+app.use(express.static(uploadFolderPath));
+app.get('/getImg',(req,res)=>{
+  let Img=getImagesFromDir(uploadFolderPath);
+  //res.render('gallery',{title:'PHOTO-GALLERY',images:Img});
+  res.json({IMGdata:Img});
+  console.log(Img);
+});
+
+function getImagesFromDir(dirPath){
+  let allImg=[];
+  var files=fs.readdirSync(dirPath).map(fileName => {
+      return path.join(dirPath, fileName);
+      //return fileName;
+    });
+    var myfiles=fs.readdirSync(dirPath).map(fileName => {
+      //return path.join(dirPath, fileName);
+      return fileName;
+    });
+    //console.log('files '+myfiles);
+    for(f in files){
+      console.log('file-'+f+' : '+myfiles[f]);
+      var stat =fs.statSync(files[f]);
+      if(stat && stat.isDirectory()){
+          getImagesFromDir(files[f]);
+      }else if(stat && stat.isFile() && ['.jpg','.png'].indexOf(path.extname(files[f]))!==-1) {
+          //allImg.push('/static'+files[f]);
+          allImg.push(myfiles[f]);
+      }
+    }
+    
+  return allImg;
+}

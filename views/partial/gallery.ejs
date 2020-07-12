@@ -1,0 +1,47 @@
+<div class="box">
+    Activity Gallery:
+    <div id="imagesID" class="overlay"> 
+        
+    </div>
+    
+</div>        
+<script>
+            var fetchdata;
+            var wait=1;
+            fetch('/getImg')
+            .then(function(res){
+                return res.json();
+            })
+            .then(function(obj){
+                fetchdata=obj;
+            })
+            .catch(function(error){
+                console.log('Error, Data not fetched');
+                console.log(error)
+            });
+            fetch_N_process_DATA();
+            
+            function fetch_N_process_DATA() {
+            setTimeout(function(){ 
+                processData(fetchdata);
+            }, 1000*wait);
+            function processData(fetchdata){
+                //console.log(fetchdata.IMGdata);
+                var picstring=fetchdata.IMGdata;
+                //console.log(picstring.toString());
+                //console.log(picstring.length);
+                //var pics=picstring.split(','); 
+                pics=picstring;                    
+                //console.log("EJS: "+pics);
+                for(i=0;i<pics.length;i++){
+                    var img=new Image(200,200);
+                    img.src='/../'+pics[i];
+                    //console.log(pics[i]);
+                    //console.log(img.src);
+                    var source=document.getElementById("imagesID");
+                    source.appendChild(img);
+                }
+            }
+            
+            }
+</script>

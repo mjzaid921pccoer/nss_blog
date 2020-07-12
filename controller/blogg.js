@@ -57,6 +57,8 @@ exports.viewArticleById =(req,res)=>{
               })
             }
           });
+
+
     } catch (error) {
         console.log(error)
     }
