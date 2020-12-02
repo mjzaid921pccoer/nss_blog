@@ -288,5 +288,5 @@ describe('-> Testing webapp',()=>{
 
     });
     
-    //after(async () => driver.quit());
+    after(async () => driver.quit());
 });
